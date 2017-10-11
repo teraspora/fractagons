@@ -5,7 +5,7 @@
 ;;;; Use:  IFS fractal image generator.
 ;___________________________________________________________________________________________________________ 
 
-;;; ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ USER AND DEVELOPERB GUIDE ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+;;; ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ USER AND DEVELOPER GUIDE ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 ;;; ### INTRODUCTION ###
 
@@ -20,6 +20,8 @@
 
 ;;; If you want to skip all this information and just get started creating images, jump to the "Get started"
 ;;; section at the end of this user guide.
+
+;;; ### DEVELOPERS' & MATHEMATICIANS' GUIDE ###
 
 ;;; Fractagons has been made possible by the wonderful Quil graphics library, developed and maintained by
 ;;; Nikita Beloglazov.   Quil is kind of a Clojure wrapper around the Java-based 
@@ -281,11 +283,11 @@
 
 ;;; GET STARTED:
 
+;;;;;;;;;;;;;;; *********************@@@@@@@@@@@@@@@@@@@@@@@@@@******************** #################
 
 ;;; TO DO: logging option/ separate window/jframe
-;;;        What about +c as in escape-time fractals???
 ;;;        enter params on invocation?? (Override defaults?)  
-;;;        package:  uberjar??
+;;;        package:  uberjar??  webapp?   android?
 ;;;        more colour control: try RGB??  [curvature speed sector -> [r g b]?? Colour maps?
 
 
@@ -519,7 +521,6 @@
                        nil)]
     (if fgon-state 
         (do (q/background 0)
-            (print-in-colour "Reverting to saved state..."  CLR_LR)
             (print-map (merge state fgon-state {:level 0 :param-delta (:param-delta state) 
               :scale-not-shift (:scale-not-shift state) :last-fname (dock-string fname 4)})))
         (do (print-in-colour "No state-map file to which to revert.   Ignoring." CLR_LR)

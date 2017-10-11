@@ -29,6 +29,7 @@
          b               0.0
          u               t]
       (-> m (assoc :a a :b b :u u) (dissoc :w))))
+;;; ********* OR (-> m (dissoc :navigation-2d)))
 
 (def fdir (clojure.java.io/file "/home/john/-scratch/"))
 (def fdir2 (clojure.java.io/file "/home/john/--scratch/"))
