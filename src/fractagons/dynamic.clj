@@ -1232,23 +1232,33 @@
           (= k :a)                   (if (contains? (q/key-modifiers) :alt)
                                         (assoc state :a (- (:a state))) ; negate a
                                         (assoc state :a (- (:a state) delta)))
-          (= k :A)                   (assoc state :a (+ (:a state) delta))
+          (= k :A)                   (if (contains? (q/key-modifiers) :alt)
+                                        (assoc state :a 0.0)            ; zero a
+                                        (assoc state :a (+ (:a state) delta)))
           (= k :b)                   (if (contains? (q/key-modifiers) :alt)
                                         (assoc state :b (- (:b state))) ; negate b
                                         (assoc state :b (- (:b state) delta)))
-          (= k :B)                   (assoc state :b (+ (:b state) delta))
+          (= k :B)                   (if (contains? (q/key-modifiers) :alt)
+                                        (assoc state :b 0.0)            ; zero b
+                                        (assoc state :b (+ (:b state) delta)))
           (= k :t)                   (if (contains? (q/key-modifiers) :alt)
                                         (assoc state :t (- (:t state))) ; negate t
                                         (assoc state :t (/ (:t state) delta+1)))
-          (= k :T)                   (assoc state :t (* (:t state) delta+1))
+          (= k :T)                   (if (contains? (q/key-modifiers) :alt)
+                                        (assoc state :t 0.0)            ; zero t
+                                        (assoc state :t (* (:t state) delta+1)))
           (= k :u)                   (if (contains? (q/key-modifiers) :alt)
                                         (assoc state :u (- (:u state))) ; negate u
                                         (assoc state :u (/ (:u state) delta+1)))
-          (= k :U)                   (assoc state :u (* (:u state) delta+1))
+          (= k :U)                   (if (contains? (q/key-modifiers) :alt)
+                                        (assoc state :u 0.0)            ; zero u
+                                        (assoc state :u (* (:u state) delta+1)))
           (= k :w)                   (if (contains? (q/key-modifiers) :alt)
                                         (assoc state :w (- (:w state))) ; negate w
                                         (assoc state :w (- (:w state) (* delta 2.5))))
-          (= k :W)                   (assoc state :w (+ (:w state) (* delta 2.5)))
+          (= k :W)                   (if (contains? (q/key-modifiers) :alt)
+                                        (assoc state :w 0.0)            ; zero w
+                                        (assoc state :w (+ (:w state) (* delta 2.5))))
 
           ; Transforms / mirroring of the final image
             ; Translation & scaling...
