@@ -294,6 +294,16 @@
             [clojure.string :as str]))
 (import javax.swing.JFileChooser)
 
+;////////////////////////////////////////////////////////////////////////////////////////////////////////
+;; GET RID OF THIS BIT!
+;////////////////////////////////////////////////////////////////////////////////////////////////////////
+;////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+;////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+
 ;; Constants etc.
 (defn BLACK [] (q/color 0 0 0)) ; create a fn as a workaround, as can't 
                                 ; invoke (q/color) outside of setup/draw/update
@@ -368,7 +378,7 @@
   (assoc state :size 1 :x0 0.0 :y0 0.0 :x 0.0 :y 0.0
     :level 0 :image-num 0 :making-video-seq false :current-video-dir SPACE
     :hue-offset 0 :x-shift 0 :y-shift 0 :scale-not-shift true :x-scale 1.0 :y-scale 1.0 :mirror false
-    :invert-colours false :param-delta 0.2 :colour-by-speed false :pre-transform false
+    :invert-colours false :param-delta 0.2 :colour-by-speed false :curvature 1.0 :pre-transform false
     :apply-ballfold false :swap-xy false :treat-as-polar false :polarise-vfunc false 
     :root-pre-trans false :sq-pre-trans false :sq-pre-trans-components false :root-pre-trans-components false 
     :rotate-by-half-pi false :rotate-by-quarter-pi false :rotate-by-half-a-sector false
@@ -381,7 +391,7 @@
   (print-in-colour (str "Resetting state to default for order " 
       (:polygon-order state) " fractagons with variation " (:variation state)) CLR_LM)
     (q/background 0)
-    (print-map (set-default-params (init-state (assoc state :curvature 1.0)))))
+    (print-map (set-default-params (init-state state))))
 
 ;; Some utility fns
 
@@ -509,6 +519,7 @@
                        nil)]
     (if fgon-state 
         (do (q/background 0)
+            (print-in-colour "Reverting to saved state..."  CLR_LR)
             (print-map (merge state fgon-state {:level 0 :param-delta (:param-delta state) 
               :scale-not-shift (:scale-not-shift state) :last-fname (dock-string fname 4)})))
         (do (print-in-colour "No state-map file to which to revert.   Ignoring." CLR_LR)
@@ -522,6 +533,22 @@
     (if (> (count img) 4) 
       (q/set-image 0 0 (q/load-image img)) (print-in-colour "No image to which to revert.   Ignoring." CLR_LR))
     state))
+
+;;; ##################################################################################################
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 ;;; ##################################################################################################
 
@@ -957,16 +984,16 @@
   (let 
     [{:keys [sq-pre-trans root-pre-trans sq-pre-trans-components root-pre-trans-components]} state
      rs   (into state       ; map these keys to the values below
-             (zipmap [:variation :pre-trans-index   ;
+             (zipmap [:variation :pre-trans-index
                :x-scale :y-scale :x-shift :y-shift :level :drawn-frames :making-video-seq
-               :t :u :w
+               :t :u :a :b
                :pre-transform :treat-as-polar :polarise-vfunc :swap-xy :apply-ballfold
                :root-pre-trans :sq-pre-trans :root-pre-trans-components :sq-pre-trans-components :reapply-vfunc]
                
               (concat 
                 [(rand-int (count vfuncs)) (rand-int PRE-TRANS-FUNC-COUNT)
                 1.0 1.0 0 0 0 0 false
-                (dec2 (rand 4)) (dec2 (rand 4)) (dec2 (rand 4))]
+                (dec2 (rand 4)) (dec2 (rand 4)) (dec2 (rand 4)) (dec2 (rand 4))]
                 (take 9 (repeatedly rand-bool)) [(if symmetrical? false (rand-bool))])))
       rs   (if sq-pre-trans 
                  (assoc rs :root-pre-trans false) 
@@ -1087,6 +1114,7 @@
         (draw-dots (mirror-pixel pxs pys width height) size)
         (draw-dot [pxs pys] size)))
    (catch Exception e (print-in-colour "Exception encountered, dec-ing vfunc & resetting..." CLR_LM)
+                      (.printStackTrace e)
                       (reset! (q/state-atom) 
                         (-> (assoc state :variation (mod (dec (:variation state)) (count vfuncs))) reset-state)))))
 
