@@ -117,21 +117,21 @@ Distributed under the Eclipse Public License either version 1.0 or whatever.   B
   famous Sierpinski Triangle, but generalised to polygons of order n, where n>2.
 
   The function takes seven parameters:
-    *  z  -  a 2-element vector representing a complex number or a Cartesian vector -  
-                                                  the previous value of the function or pre-transform
-    *  t, u  -  real multiplicative parameters which can be varied with keys t, T, u, U
-                                                  default value for both:  0.5
-    *  a, b  -  real additive parameters which can be varied with keys a, A, b, B 
-                                                  default values:  a = 0.75, b = 0.0
-    *  n  -  an integer >= 3 which specifies the order of the polygon can be varied with keys n and N
-                  from 64 upwards N doubles, n halves.
-    *  spoke  -  we multiply the intermediate result by a unit vector with angle corresponding to
-                  one of the spokes of the incipient polygon, e.g. for the default case n=3 we have
-                  angles 0, 2 PI/3, 4 PI/3.   Chosen randomly by the caller.
-    *  vfunc  -  the variation function (predominently trigonometrically-based)
-                  to be applied before, and optionally also after, the affine transform
-                  this itself a variation on Scott Draves' scheme.
-                  Increment/decrement the vfunc index (:variation state) with the # and ' keys. 
+*  z  -  a 2-element vector representing a complex number or a Cartesian vector -  
+                                              the previous value of the function or pre-transform
+*  t, u  -  real multiplicative parameters which can be varied with keys t, T, u, U
+                                              default value for both:  0.5
+*  a, b  -  real additive parameters which can be varied with keys a, A, b, B 
+                                              default values:  a = 0.75, b = 0.0
+*  n  -  an integer >= 3 which specifies the order of the polygon can be varied with keys n and N
+              from 64 upwards N doubles, n halves.
+*  spoke  -  we multiply the intermediate result by a unit vector with angle corresponding to
+              one of the spokes of the incipient polygon, e.g. for the default case n=3 we have
+              angles 0, 2 PI/3, 4 PI/3.   Chosen randomly by the caller.
+*  vfunc  -  the variation function (predominently trigonometrically-based)
+              to be applied before, and optionally also after, the affine transform
+              this itself a variation on Scott Draves' scheme.
+              Increment/decrement the vfunc index (:variation state) with the # and ' keys. 
 
   If its parameters all have their default values, it will produce a Sierpinski Triangle.
 
