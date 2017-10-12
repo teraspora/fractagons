@@ -226,7 +226,7 @@ Distributed under the Eclipse Public License either version 1.0 or whatever.   B
   .     Take the square root of the value of the pre-transform fn.
   /     Square the value of the pre-transform fn.
   '     Take the square roots of real and imaginary components of the value of the pre-transform fn.
-  #     Square the real and imaginary components of the value of the pre-transform fn.
+  [hash]     Square the real and imaginary components of the value of the pre-transform fn.
   =     Invoke pre-transform.
 
   MISCELLANEOUS COMMANDS:
@@ -368,7 +368,7 @@ If you hold down Alt while doing this you’ll preserve the variation function y
 
 This guide is far from complete so apologies in advance.   I hope it’s enough to get you going!
 
-Have fun.
+Have fun.   John :)
 
   *********************@@@@@@@@@@@@@@@@@@@@@@@@@@******************** #################
 
