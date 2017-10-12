@@ -368,7 +368,7 @@ If you hold down Alt while doing this you’ll preserve the variation function y
 
 This guide is far from complete so apologies in advance.   I hope it’s enough to get you going!
 
-Have fun.
+Have fun.   John :)
 
   *********************@@@@@@@@@@@@@@@@@@@@@@@@@@******************** #################
 
