@@ -981,9 +981,9 @@
 
 (defn create-random-state 
   "Pot-luck image; randomise salient parameters but retain polygon-order, colour settings etc."
-  [state symmetrical?]
+  [state symmetrical? preserve-vfunc?]
   (let 
-    [{:keys [sq-pre-trans root-pre-trans sq-pre-trans-components root-pre-trans-components]} state
+    [{:keys [sq-pre-trans root-pre-trans sq-pre-trans-components root-pre-trans-components variation]} state
      rs   (into state       ; map these keys to the values below
              (zipmap [:variation :pre-trans-index
                :x-scale :y-scale :x-shift :y-shift :level :drawn-frames :making-video-seq
@@ -992,7 +992,7 @@
                :root-pre-trans :sq-pre-trans :root-pre-trans-components :sq-pre-trans-components :reapply-vfunc]
                
               (concat 
-                [(rand-int (count vfuncs)) (rand-int PRE-TRANS-FUNC-COUNT)
+                [(if preserve-vfunc? variation (rand-int (count vfuncs))) (rand-int PRE-TRANS-FUNC-COUNT)
                 1.0 1.0 0 0 0 0 false
                 (dec2 (rand 4)) (dec2 (rand 4)) (dec2 (rand 4)) (dec2 (rand 4))]
                 (take 9 (repeatedly rand-bool)) [(if symmetrical? false (rand-bool))])))
@@ -1174,23 +1174,26 @@
           ; Create a random state
           (= k :g)                   (do (print-in-colour "Creating random state..." CLR_LM)
                                          (q/background 0)
-                                         (print-map (create-random-state state false)))
+                                         (print-map (create-random-state state false 
+                                            (if (contains? (q/key-modifiers) :alt) true false))))
 
-          ; Create a random state
+          ; Create a symmetrical random state
           (= k :G)                   (do (print-in-colour "Creating symmetrical random state..." CLR_LM)
                                          (q/background 0)
-                                         (print-map (create-random-state state true)))
+                                         (print-map (create-random-state state true 
+                                            (if (contains? (q/key-modifiers) :alt) true false))))
 
           ; Toggle flag to save images as img<nnnnn>.png, to make a video sequence
           (= k :M)                   (do (when-not mvs (q/background 0))
-                                         (assoc state :making-video-seq (not mvs)
-                                                  :current-video-dir (if-not mvs
-                                                                       (let [dir (create-video-dir)
-                                                                             fname (str dir "/" dir)]
-                                                                          (save-state-map state fname)
-                                                                          dir)
-                                                                        nil)
-                                                  :image-num -1))
+                                         (assoc state 
+                                              :making-video-seq (not mvs)
+                                              :current-video-dir (if-not mvs
+                                                                   (let [dir (create-video-dir)
+                                                                         fname (str dir "/" dir)]
+                                                                      (save-state-map state fname)
+                                                                      dir)
+                                                                    nil)
+                                              :image-num -1))
 
           ; Print the iteration count 
           (= k :j)                   (do (print-in-colour (str "Iteration count: " (:level state))  CLR_LM) (flush) state) 
@@ -1230,31 +1233,31 @@
           
           ; Modify a, b, t, u, w parameters...
           (= k :a)                   (if (contains? (q/key-modifiers) :alt)
-                                        (assoc state :a (- (:a state))) ; negate a
+                                        (assoc state :a (- (:a state)))                  ; negate a
                                         (assoc state :a (- (:a state) delta)))
           (= k :A)                   (if (contains? (q/key-modifiers) :alt)
-                                        (assoc state :a (if (zero? (:a state)) A 0.0))  ; toggle zeroise/reset a
+                                        (assoc state :a (if (zero? (:a state)) A 0.0))   ; toggle zeroise/reset a
                                         (assoc state :a (+ (:a state) delta)))
           (= k :b)                   (if (contains? (q/key-modifiers) :alt)
-                                        (assoc state :b (- (:b state))) ; negate b
+                                        (assoc state :b (- (:b state)))                  ; negate b
                                         (assoc state :b (- (:b state) delta)))
           (= k :B)                   (if (contains? (q/key-modifiers) :alt)
                                         (assoc state :b (if (zero? (:b state)) B 0.0))   ; toggle zeroise/reset b
                                         (assoc state :b (+ (:b state) delta)))
           (= k :t)                   (if (contains? (q/key-modifiers) :alt)
-                                        (assoc state :t (- (:t state))) ; negate t
+                                        (assoc state :t (- (:t state)))                  ; negate t
                                         (assoc state :t (/ (:t state) delta+1)))
           (= k :T)                   (if (contains? (q/key-modifiers) :alt)
                                         (assoc state :t (if (zero? (:t state)) T 0.0))   ; toggle zeroise/reset t
                                         (assoc state :t (* (:t state) delta+1)))
           (= k :u)                   (if (contains? (q/key-modifiers) :alt)
-                                        (assoc state :u (- (:u state))) ; negate u
+                                        (assoc state :u (- (:u state)))                  ; negate u
                                         (assoc state :u (/ (:u state) delta+1)))
           (= k :U)                   (if (contains? (q/key-modifiers) :alt)
                                         (assoc state :u (if (zero? (:u state)) U 0.0))   ; toggle zeroise/reset u
                                         (assoc state :u (* (:u state) delta+1)))
           (= k :w)                   (if (contains? (q/key-modifiers) :alt)
-                                        (assoc state :w (- (:w state))) ; negate w
+                                        (assoc state :w (- (:w state)))                  ; negate w
                                         (assoc state :w (- (:w state) (* delta 2.5))))
           (= k :W)                   (if (contains? (q/key-modifiers) :alt)
                                         (assoc state :w (if (zero? (:w state)) W 0.0))   ; toggle zeroise/reset w
