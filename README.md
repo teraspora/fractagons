@@ -303,6 +303,73 @@ Distributed under the Eclipse Public License either version 1.0 or whatever.   B
 
   GET STARTED:
 
+## Alpha ultra-minimalist Get-Started Guide ##
+
+Run the program by firing up a Leiningen REPL in the root folder and evaluating 
+
+(use :reload 'fractagons.core)
+
+This should compile both core.clj and dynamic.clj in the /src/fractagons directory, and kick off core.clj.
+
+If you save changes in dynamic.clj then just eval (use :reload 'fractagons.dynamic).
+
+All the action is in dynamic.clj:  it’s a Quil “fun-mode” sketch, so it loops between the update and draw functions, passing a state map around as it does so (maintained behind the Quil scenes as an atom).
+
+So it adds a pixel (or four, if mirroring) to the display window every frame and thus builds up the image.
+
+You can control the image in many, many ways with keypresses (as long as the window has focus, of course).  
+
+Until I have written a comprehensive, non-alpha version of this quickstart guide you will have to refer to the documentation at the head of the program, reproduced in the README.md file for detailed info.
+
+Upper-case letters increment the eponymous parameter.   Lower-case letters decrement it 
+
+Real parameters change geometrically, integer parameters change arithmetically modulo something in unitary steps.   Boolean values toggle.
+
+Use Alt+upper-case to zeroise/reset-to-default a real parameter,  Alt+upper-case to negate it.
+
+It starts off by default producing a Sierpinski Triangle.
+
+Try hitting “N” a few times to get a hexagon or whatever, “n” to go down.
+
+Hit “=” to invoke a pre-transform, and “k” or “K” to choose the previous or next one
+
+Change the variation function (the identity by default) with “v” and “V”.
+
+Play about with colour using “c”, “i”, “h” and “H”.
+
+Mirror the image with “m”.
+
+Scale it smaller or larger with “e” and “E”.
+
+Play about with the t, u, a and b parameters by hitting the corresponding keys. (Remember about zeroising and negating!)
+
+Rotate the image by pi/2, pi/4 or half a sector (pi/n, where n is the order of the fractagon) using the keys “O”, “o”, and “*” respectively.
+
+Reflect L-R or Up-Down with “r” and “p”.
+Change various other parameters with “$”, “P”, “f”, “’”, “#”, “.”, “/”, “!”, … (see reference abave or look at the code in function (key-typed).
+
+To save an image hit “s”.   It will be saved in a subdirectory of the directory from which the program has been run, called /images.   There will also be saved along with it a small text file containing the state map for that fractagon.   If you want to recreate an image, just load its state map file, which has the same name as the image file except with a .frm extension instead of .png.
+
+So how do you do that?   Just hit the underscore key (“_”) and you will be presented with a file chooser.
+
+To clear the screen and start again hit “z”.
+
+To reset all parameters except fractagon-order, pre-transform and variation, hit “Z”.
+
+To reset scale and shift hit “S”.
+
+To reset real params to default hit “D”.
+
+To quit hit “Q”.
+
+To get a random fractagon of whatever order you have set, hit “g”.   If you want it to be symmetrical you’ll have to tun off “:reapply-vfunc” so hit “G” instead.
+
+If you hold down Alt while doing this you’ll preserve the variation function you have set.   This is good for exploring variants of a nice fractagon.
+
+This guide is far from complete so apologies in advance.   I hope it’s enough to get you going!
+
+Have fun.
+
   *********************@@@@@@@@@@@@@@@@@@@@@@@@@@******************** #################
 
   TO DO: logging option/ separate window/jframe
