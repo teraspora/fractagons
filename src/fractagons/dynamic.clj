@@ -393,7 +393,7 @@
   (print-in-colour (str "Resetting state to default for order " 
       (:polygon-order state) " fractagons with variation " (:variation state)) CLR_LM)
     (q/background 0)
-    (print-map (set-default-params (init-state state))))
+    (print-map (dissoc (set-default-params (init-state state)) :navigation-2d)))
 
 ;; Some utility fns
 
@@ -521,8 +521,8 @@
                        nil)]
     (if fgon-state 
         (do (q/background 0)
-            (print-map (merge state fgon-state {:level 0 :param-delta (:param-delta state) 
-              :scale-not-shift (:scale-not-shift state) :last-fname (dock-string fname 4)})))
+            (print-map (dissoc (merge state fgon-state {:level 0 :param-delta (:param-delta state) 
+              :scale-not-shift (:scale-not-shift state) :last-fname (dock-string fname 4)}) :navigation-2d)))
         (do (print-in-colour "No state-map file to which to revert.   Ignoring." CLR_LR)
             (flush)
              state))))
@@ -1233,31 +1233,31 @@
                                         (assoc state :a (- (:a state))) ; negate a
                                         (assoc state :a (- (:a state) delta)))
           (= k :A)                   (if (contains? (q/key-modifiers) :alt)
-                                        (assoc state :a 0.0)            ; zero a
+                                        (assoc state :a (if (zero? (:a state)) A 0.0))  ; toggle zeroise/reset a
                                         (assoc state :a (+ (:a state) delta)))
           (= k :b)                   (if (contains? (q/key-modifiers) :alt)
                                         (assoc state :b (- (:b state))) ; negate b
                                         (assoc state :b (- (:b state) delta)))
           (= k :B)                   (if (contains? (q/key-modifiers) :alt)
-                                        (assoc state :b 0.0)            ; zero b
+                                        (assoc state :b (if (zero? (:b state)) B 0.0))   ; toggle zeroise/reset b
                                         (assoc state :b (+ (:b state) delta)))
           (= k :t)                   (if (contains? (q/key-modifiers) :alt)
                                         (assoc state :t (- (:t state))) ; negate t
                                         (assoc state :t (/ (:t state) delta+1)))
           (= k :T)                   (if (contains? (q/key-modifiers) :alt)
-                                        (assoc state :t 0.0)            ; zero t
+                                        (assoc state :t (if (zero? (:t state)) T 0.0))   ; toggle zeroise/reset t
                                         (assoc state :t (* (:t state) delta+1)))
           (= k :u)                   (if (contains? (q/key-modifiers) :alt)
                                         (assoc state :u (- (:u state))) ; negate u
                                         (assoc state :u (/ (:u state) delta+1)))
           (= k :U)                   (if (contains? (q/key-modifiers) :alt)
-                                        (assoc state :u 0.0)            ; zero u
+                                        (assoc state :u (if (zero? (:u state)) U 0.0))   ; toggle zeroise/reset u
                                         (assoc state :u (* (:u state) delta+1)))
           (= k :w)                   (if (contains? (q/key-modifiers) :alt)
                                         (assoc state :w (- (:w state))) ; negate w
                                         (assoc state :w (- (:w state) (* delta 2.5))))
           (= k :W)                   (if (contains? (q/key-modifiers) :alt)
-                                        (assoc state :w 0.0)            ; zero w
+                                        (assoc state :w (if (zero? (:w state)) W 0.0))   ; toggle zeroise/reset w
                                         (assoc state :w (+ (:w state) (* delta 2.5))))
 
           ; Transforms / mirroring of the final image
