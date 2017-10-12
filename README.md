@@ -18,14 +18,13 @@ Copyright © 2017 John Lynch
 
 Distributed under the Eclipse Public License either version 1.0 or whatever.   Basically it's open-source but please credit me if you use my code or borrow my algorithms!
 
-  Program:  Fractagons, vsn 1.0
-  Author:  John Lynch
-  Date:  August 2017
-
-  Use:  IFS fractal image generator.
+*  Program:  Fractagons, vsn 1.0
+*  Author:  John Lynch
+*  Date:  August 2017
+*  Use:  IFS fractal image generator.
  ___________________________________________________________________________________________________________ 
 
-  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ USER AND DEVELOPER GUIDE ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ ## ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ USER AND DEVELOPER GUIDE ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
   ### INTRODUCTION ###
 
@@ -54,8 +53,7 @@ Distributed under the Eclipse Public License either version 1.0 or whatever.   B
   (http://flam3.com/flame.pdf), and indeed I have used a number of the 
   non-parametric "variation functions" described therein.   There are, however, several
   of significant differences.   One is that I apply the variation function
-  before the affine transform, and optionally after as well.  
-  The default variation is the identity function.
+  before the affine transform, and optionally after as well.  The default variation is the identity function.
 
   It may be noted that I have found it more than handy, indeed practically essential,
   to treat Cartesian points (x, y) as complex numbers x+iy, and here and there
@@ -81,14 +79,14 @@ Distributed under the Eclipse Public License either version 1.0 or whatever.   B
   (x, y) -> (x cos y, x sin y). 
 
   A plethora of parameters may have their values tweaked by typing a key, so for example
-  the parameter w is incremented by typing "W" and decremented by typing "w", and the 
+  the parameter t is incremented by typing "T" and decremented by typing "t", and the 
   "swap-xy" flag is toggled with a "?".
 
   The Quil fun-mode update-draw loop enables me to pass around the program state, in the form of a 
   map of keywords to integer, real or boolean values, from function to function.   Changes are made
   to the state by typing a key which creates a new state with the appropriate parameter's value modified. 
   In this documentation, flags/parameters of the state map  are referred to by their
-  keys, with or without the leading colon.
+  keyword keys, with or without the leading colon.
 
   The current state of the image may be saved at any time by hitting "s".   It is saved 
   as a .png file in a subdirectory of the current directory (where the program is run from)
@@ -96,14 +94,14 @@ Distributed under the Eclipse Public License either version 1.0 or whatever.   B
   save a short textfile containing the current state map, with the same filename but the
   extension .frm instead of .png.   So, we can recreate an image (unless it's a 
   composite:  see below) by reading in the corresponding .frm file and assoc-ing it to the
-  existing state map.   How?   Just hit "_" and a file-open dialog will pop up.
+  existing state map.   How?   Just hit the underscore key and a file-open dialog will pop up.
   Clojure makes object serialization so easy!
 
   If you just wamt to revert to the last saved image, though, without its state, you can just hit "R".
 
   To clear the canvas, hit "z".   This will also reset the iteration count (:level) and print the state map.
 
-  To generate a random state and create its corresponding image, hit the g key.
+  To generate a random state and create its corresponding image, hit the g key - or G to guarantee symmetry.
 
   To reset all parameters except :polygon-order, :variation and :pre-trans-index, type "Z".
 
@@ -113,26 +111,26 @@ Distributed under the Eclipse Public License either version 1.0 or whatever.   B
 
   ### There follows a description of the most salient aspects of the program:
 
-  POLYGON-H:
+  POLYGON-J:
 
   The main function used is an affine transformation I have devised. (polygon-h), based on the 
   famous Sierpinski Triangle, but generalised to polygons of order n, where n>2.
 
   The function takes seven parameters:
-      z  -  a 2-element vector representing a complex number or a Cartesian vector -  
+    *  z  -  a 2-element vector representing a complex number or a Cartesian vector -  
                                                   the previous value of the function or pre-transform
-      t, u  -  real multiplicative parameters which can be varied with keys t, T, u, U
+    *  t, u  -  real multiplicative parameters which can be varied with keys t, T, u, U
                                                   default value for both:  0.5
-      w  -  a real additive parameter which can be varied with keys w and W 
-                                                  default value for both:  1.0
-      n  -  an integer >= 3 which specifies the order of the polygon can be varied with keys n and N
+    *  a, b  -  real additive parameters which can be varied with keys a, A, b, B 
+                                                  default values:  a = 0.75, b = 0.0
+    *  n  -  an integer >= 3 which specifies the order of the polygon can be varied with keys n and N
                   from 64 upwards N doubles, n halves.
-      spoke  -  we multiply the intermediate result by a unit vector with angle corresponding to
+    *  spoke  -  we multiply the intermediate result by a unit vector with angle corresponding to
                   one of the spokes of the incipient polygon, e.g. for the default case n=3 we have
-                  angles 0, 2*PI/3, 4*PI/3.   Chosen randomly by the caller.
-      vfunc  -  the variation function (predominently trigonometrically-based)
+                  angles 0, 2 PI/3, 4 PI/3.   Chosen randomly by the caller.
+    *  vfunc  -  the variation function (predominently trigonometrically-based)
                   to be applied before, and optionally also after, the affine transform
-                  this itself - recursively ) - a variation on Scott Draves' scheme.
+                  this itself a variation on Scott Draves' scheme.
                   Increment/decrement the vfunc index (:variation state) with the # and ' keys. 
 
   If its parameters all have their default values, it will produce a Sierpinski Triangle.
