@@ -24,8 +24,8 @@ Distributed under the Eclipse Public License either version 1.0 or whatever.   B
 *  Use:  IFS fractal image generator.
  ___________________________________________________________________________________________________________ 
 
- ## ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ USER AND DEVELOPER GUIDE ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-   
+ ## ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ USER AND DEVELOPER GUIDE ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
   ### INTRODUCTION ###
 
   Fractagons is an IFS (Iterated Function System) fractal generator which enables 
@@ -39,6 +39,14 @@ Distributed under the Eclipse Public License either version 1.0 or whatever.   B
 
   If you want to skip all this information and just get started creating images, jump to the "Get started"
   section at the end of this user guide.
+
+  ### BACKGROUND ###
+
+  Fractagons is the lovechild of my romance with Clojure!   It was a difficult relationship at first: she appeared inscrutable, cryptic, arcane.   I wasn't convinced she needed to adorn herself with so many parentheses.   Having had a long affair with Java, I felt lost without solid classes, interfaces and types.   How on earth was I going to implement my 1000-lines-of-Java Complex number class (previously created to serve an escape-time fractal image generator I had been developing in Java) in Clojure?   
+
+  But people said, "You just need to understand her way of thinking!"   I devoured "Clojure for the Brave and True", read and tried to understand Clojure code wherever I could find it, discovered Quil and played about in the Leiningen REPL.   And ultimately I stopped resisting and gave myself to Clojure!   At some point, the functional paradigm, immutable state, making "objects" out of simple maps and vectors, it just all started to make sense.   It felt like a breath of fresh air!   And from then on I have really been experiencing the joy of Clojure.   It really is a lovely way to code once you take on board its mindset.
+
+  I would in fact go so far as to say that whereas writing nice, laconic, handsome, efficient Java code in order to solve some problem can give the same kind of satisfaction as solving the Guardian cryptic crosswword, doing the equivalent in Clojure feels more like having good sex!
 
   ### DEVELOPERS' & MATHEMATICIANS' GUIDE ###
 
