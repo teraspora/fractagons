@@ -156,7 +156,7 @@ Distributed under the Eclipse Public License either version 1.0 or whatever.   B
   Currently there are around 40 of these.   The selected one is applied before (polygon-h).
   Variation 0 (default) is the identity, equivalent to not applying any variation.
   Use the ! key, which toggles the value of (:reapply-vfunc state), to specify that the variation
-  be also applied after (polygon-h).
+  be also applied after (polygon-j).
 
   SIZING:
 
@@ -166,7 +166,7 @@ Distributed under the Eclipse Public License either version 1.0 or whatever.   B
       (a) When making a composite image, reduce to zero size by hitting < while changing parameters, so
   as not to pollute the image with noise.   Then use > to restart drawing.
       (b) Increase to 2 or 3 to see the general form and colouration of a new image quickly.   When 
-  these are satisfactory, just hit `>, then z or Z to restart with single-pixel dots.
+  these are satisfactory, just hit \> or \>\>, then z, to restart with single-pixel dots.
 
   COLOURS:
 
@@ -193,11 +193,11 @@ Distributed under the Eclipse Public License either version 1.0 or whatever.   B
 
   Key   Effect
   ---   ------
-  r     Reflect image in y-axis.
-  p     Reflect image in x-axis.
-  O     Rotate image by PI/2.
-  o     Rotate image by PI/4.
-  *     Rotate image by half a sector, i.e. by PI/n, where n is the value of :polygon-order.
+  * r     Reflect image in y-axis.
+  * p     Reflect image in x-axis.
+  * O     Rotate image by PI/2.
+  * o     Rotate image by PI/4.
+  * *     Rotate image by half a sector, i.e. by PI/n, where n is the value of :polygon-order.
 
   INTEGER PARAMETERS:
 
@@ -205,44 +205,49 @@ Distributed under the Eclipse Public License either version 1.0 or whatever.   B
 
   REAL PARAMETERS:
 
-  The #{t, u, w, a, b} and #{T, U, W, A, B} sets if keys are used to decrement and increment
+  The #{t, u, a, b, w} and #{T, U, A, B, W} sets of keys are used to decrement and increment
   respectively their corresponding parameters, in the case of t, u, a and b by dividing/multiplying
   by (inc (:param-delta state)), and in the case of w by subtracting/adding (* 2.5 (:param-delta state)),
   whose default value is 0.5.
+  
   Modifying the lowercase character with the Alt key instead negates the corresponding parameter.
-  t, u and w are used in (polygon-h), a and b only in (ballfold)
+  Modifying the uppercase character with the Alt key zeroes the corresponding parameter if non-zero, else
+  resets it to default.
+  
+  t, u, a and b are used in (polygon-j), w is not currently used.
 
   TWEAKING: 
 
   Key   Toggles
   ---   ------
-  ?     Swap real and imaginary parts after pre-transform:  x+iy -> y+ix.
-  P     "Polarise" z, i.e. treat [x y] as [r theta], meaning  x+iy -> x cos y + ix sin y.
-  $     "Polarise" the value of the variation function each time it's applied.
-  f     Apply the ballfold function.   Tweak it with a and b parameters.   Maybe a waste of space.....
-  !     Reapply the variation fn after (polygon-h).   This will probably result in an asymmetrical image.
-  .     Take the square root of the value of the pre-transform fn.
-  /     Square the value of the pre-transform fn.
-  '     Take the square roots of real and imaginary components of the value of the pre-transform fn.
-  [hash]     Square the real and imaginary components of the value of the pre-transform fn.
-  =     Invoke pre-transform.
+  * ?     Swap real and imaginary parts after pre-transform:  x+iy -> y+ix.
+  * P     "Polarise" z, i.e. treat [x y] as [r theta], meaning  x+iy -> x cos y + ix sin y.
+  * $     "Polarise" the value of the variation function each time it's applied.
+  * f     Apply the ballfold function.   Tweak it with a and b parameters.   [:deprecated]
+  * !     Reapply the variation fn after (polygon-h).   This will probably result in an asymmetrical image.
+  * .     Take the square root of the value of the pre-transform fn.
+  * /     Square the value of the pre-transform fn.
+  * \'     Take the square roots of real and imaginary components of the value of the pre-transform fn.
+  * \#     Square the real and imaginary components of the value of the pre-transform fn.
+  * =     Invoke pre-transform.
 
   MISCELLANEOUS COMMANDS:
 
   Key   Effect
   ---   ------
-  Q     Quit the program
-  s     Save image and state map in ./images, which will be created if it doesn't exist.
-  R     Revert to last saved image (but don't alter current state).
-  _     Load a new state from a saved state map, usually in a .frm file.
-  z     Clear the display, then carry on as normal.   Use often when changing parameters to craft a nice image.
-  Z     Reset to initial state, except that the polygon-order, variation & pre-trans-index remain the same.
-  S     Reset the scale, x- and y- offsets, and cancel any mirroring.
-  D     Reset the a, b, t, u, w params to default.
-  j     Print the iteration count.
-  -     Decrement param-delta by dividing by (sqrt 2).
-  +     Increment param-delta by multiplying by (sqrt 2).
-  g     Create a random state, clear the display and go with the new state.
+  * Q     Quit the program
+  * s     Save image and state map in ./images, which will be created if it doesn't exist.
+  * R     Revert to last saved image (but don't alter current state).
+  * _     Load a new state from a saved state map, usually in a .frm file.
+  * z     Clear the display, then carry on as normal.   Use often when changing parameters to craft a nice image.
+  * Z     Reset to initial state, except that the polygon-order, variation & pre-trans-index remain the same.
+  * S     Reset the scale, x- and y- offsets, and cancel any mirroring.
+  * D     Reset the a, b, t, u, w params to default.
+  * j     Print the iteration count.
+  * -     Decrement param-delta by dividing by (sqrt 2).
+  * +     Increment param-delta by multiplying by (sqrt 2).
+  * g     Create a random state, clear the display and go with the new state.
+  * g     Create a symmetrical random state, clear the display and go with the new state.
 
   DEVELOPER WALKTHROUGH:
 
@@ -276,28 +281,27 @@ Distributed under the Eclipse Public License either version 1.0 or whatever.   B
 
   Lastly, the heart and associated organs: (update-state), (draw), (mouse-clicked) and (key-typed):
 
-      (update) takes the last (x, y) point, looks at the data in the state map to determine 
-      which fns to apply to it and what arguments to supply them with, applies them and 
-      spits out another point in the direction of...
+* (update) takes the last (x, y) point, looks at the data in the state map to determine 
+which fns to apply to it and what arguments to supply them with, applies them and 
+spits out another point in the direction of...
 
-      (draw), which after determining what rotations, translations and scalings have been requested 
-      decides which pixel represents this new point, and then works out a colour for it: 
-      if (:colour-by-speed state) returns true (default)  then the distance from the 
-      previous point determines the hue.   If it's false, we want to choose the colour
-      based on curvature, that means we're determining the colour as a fn of the difference of 
-      arguments of the vectors from the penultimate to the last point and 
-      from the last to the current point.   Note that the state map holds a reference to the
-      previous point and that (update) has already calculated the curvature for you.
-      (draw) then calls (draw-dot) or (draw-dots) to actally colour pixels and complete 
-      the current iteration of the draw loop.
+* (draw), which after determining what rotations, translations and scalings have been requested, 
+calculates which pixel represents this new point, and then works out a colour for it: 
+if (:colour-by-speed state) returns true (default)  then the distance from the 
+previous point determines the hue.   If it's false, we want to choose the colour
+based on curvature, that means we're determining the colour as a fn of the difference of 
+arguments of the vectors from the penultimate to the last point and 
+from the last to the current point.   Note that the state map holds a reference to the
+previous point and that (update) has already calculated the curvature for you.
+(draw) then calls (draw-dot) or (draw-dots) to actually colour pixels and complete 
+the current iteration of the draw loop.
 
-      (mouse-clicked) just does a soft reset, blanking the display, resetting the iteration count 
-      and restarting with the point represented by the clicked pixel.
+* (mouse-clicked) just does a soft reset, blanking the display, resetting the iteration count 
+and restarting with the point represented by the clicked pixel.
 
-      (key-typed) handles user input in the form of keys typed which change program state 
-      and therefore affect the image in some way (except a few like "j", which just prints the iteration count).
+* (key-typed) handles user input in the form of keys typed which change program state 
+and therefore affect the image in some way (except a few like "j", which just prints the iteration count).
 
-  ...#############...#############...#############...#############...#############...#############...
 
   GET STARTED:
 
