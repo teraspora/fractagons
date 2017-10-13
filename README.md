@@ -70,6 +70,8 @@ Distributed under the Eclipse Public License either version 1.0 or whatever.   B
 
   Recreate an image by reading in its corresponding "Fractagon Map" (.frm) file. Hit "\_" to do this.
 
+  There are 12 Fractagon images in the [examples](https://github.com/1-0-2-4/fractagons/tree/master/examples) directory, together with their .frm files.   Try loading these and then tweaking them...
+
   Hit "G" to get a random symmetrical fractal.   If it's all black or you only see stuff developing around the edges, hit "e" a few times to reduce the scale.   If you don't like the colours then use "c", "i", "h" and "H" to play with them.   And "z" of course.
 
   To make a composite image, change the pixel size to zero with "<" before tweaking parameters, then ">" to increase it to 1 again and recommence drawing.
