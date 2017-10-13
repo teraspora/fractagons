@@ -20,7 +20,7 @@ Distributed under the Eclipse Public License either version 1.0 or whatever.   B
 
 *  Program:  Fractagons, vsn 1.0
 *  Author:  John Lynch
-*  Date:  August 2017
+*  Date:  August  2017
 *  Use:  IFS fractal image generator.
  ___________________________________________________________________________________________________________ 
 
@@ -97,11 +97,13 @@ Distributed under the Eclipse Public License either version 1.0 or whatever.   B
   existing state map.   How?   Just hit the underscore key and a file-open dialog will pop up.
   Clojure makes object serialization so easy!
 
-  If you just wamt to revert to the last saved image, though, without its state, you can just hit "R".
+  If you just want to revert to the last saved image, though, without its state, you can just hit "R".
 
   To clear the canvas, hit "z".   This will also reset the iteration count (:level) and print the state map.
 
   To generate a random state and create its corresponding image, hit the g key - or G to guarantee symmetry.
+
+  Holding down Alt with g or G will also preserve the variation you have set.
 
   To reset all parameters except :polygon-order, :variation and :pre-trans-index, type "Z".
 
@@ -113,7 +115,7 @@ Distributed under the Eclipse Public License either version 1.0 or whatever.   B
 
   POLYGON-J:
 
-  The main function used is an affine transformation I have devised. (polygon-h), based on the 
+  The main function used is an affine transformation I have devised. (polygon-j), based on the 
   famous Sierpinski Triangle, but generalised to polygons of order n, where n>2.
 
   The function takes seven parameters:
@@ -153,7 +155,7 @@ Distributed under the Eclipse Public License either version 1.0 or whatever.   B
 
   VARIATIONS:
 
-  Currently there are around 40 of these.   The selected one is applied before (polygon-h).
+  Currently there are around 40 of these.   The selected one is applied before (polygon-j).
   Variation 0 (default) is the identity, equivalent to not applying any variation.
   Use the ! key, which toggles the value of (:reapply-vfunc state), to specify that the variation
   be also applied after (polygon-j).
@@ -192,12 +194,12 @@ Distributed under the Eclipse Public License either version 1.0 or whatever.   B
   REFLECTING AND ROTATING:
 
   Key   Effect
-  ---   ------
-  * r     Reflect image in y-axis.
-  * p     Reflect image in x-axis.
-  * O     Rotate image by PI/2.
-  * o     Rotate image by PI/4.
-  * \*     Rotate image by half a sector, i.e. by PI/n, where n is the value of :polygon-order.
+  ---  |  ------
+  * r  |   Reflect image in y-axis.
+  * p  |   Reflect image in x-axis.
+  * O  |   Rotate image by PI/2.
+  * o  |  Rotate image by PI/4.
+  * \* |    Rotate image by half a sector, i.e. by PI/n, where n is the value of :polygon-order.
 
   INTEGER PARAMETERS:
 
@@ -224,7 +226,7 @@ Distributed under the Eclipse Public License either version 1.0 or whatever.   B
   * P     "Polarise" z, i.e. treat [x y] as [r theta], meaning  x+iy -> x cos y + ix sin y.
   * $     "Polarise" the value of the variation function each time it's applied.
   * f     Apply the ballfold function.   Tweak it with a and b parameters.   [:deprecated]
-  * !     Reapply the variation fn after (polygon-h).   This will probably result in an asymmetrical image.
+  * !     Reapply the variation fn after (polygon-j).   This will probably result in an asymmetrical image.
   * .     Take the square root of the value of the pre-transform fn.
   * /     Square the value of the pre-transform fn.
   * \'     Take the square roots of real and imaginary components of the value of the pre-transform fn.
@@ -274,7 +276,7 @@ Distributed under the Eclipse Public License either version 1.0 or whatever.   B
   I realise this is not the ideal scheme - lumping them all together under a (defmulti), might be better -
   but revamping this part of the program is not a priority at present.
 
-  After these, we find our core affine transform, (polygon-h), described above.
+  After these, we find our core affine transform, (polygon-j), described above.
 
   Following these, we see the (pre-transform) fn, referred to above, which actually encapsulates
   a bunch of function variants in a case statement.   We pass it the index which is the value 
