@@ -18,13 +18,13 @@ Copyright © 2017 John Lynch
 
 Distributed under the Eclipse Public License either version 1.0 or whatever.   Basically it's open-source but please credit me if you use my code or borrow my algorithms!
 
-*  Program:  Fractagons, vsn 1.0
+*  Program:  Fractagons, vsn 1.01
 *  Author:  John Lynch
-*  Date:  August  2017
+*  Date:  October  2017
 *  Use:  IFS fractal image generator.
  ___________________________________________________________________________________________________________ 
 
- ## ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ USER AND DEVELOPER GUIDE ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ ## ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ USER AND DEVELOPER GUIDE ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
   ### INTRODUCTION ###
 

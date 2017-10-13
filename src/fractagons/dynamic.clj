@@ -1,14 +1,7 @@
-;;;; Program:  Fractagons, vsn 1.0
+;;;; Program:  Fractagons, vsn 1.01
 ;;;; Author:  John Lynch
-;;;; Date:  August 2017
-
+;;;; Date:  October 2017
 ;;;; Use:  IFS fractal image generator.
-
-;;; TO DO: logging option/ separate window/jframe
-;;;        enter params on invocation?? (Override defaults?)  
-;;;        package:  uberjar??  webapp?   android?
-;;;        more colour control: try RGB??  [curvature speed sector -> [r g b]?? Colour maps?
-
 
 (ns fractagons.dynamic
   (:require [quil.core :as q]

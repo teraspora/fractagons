@@ -1,6 +1,6 @@
-;;;; Program:  Fractagons, vsn 1.0
+;;;; Program:  Fractagons, vsn 1.01
 ;;;; Author:  John Lynch
-;;;; Date:  August 2017
+;;;; Date:  October 2017
 
 ;;;; Use:  IFS fractal image generator.
 

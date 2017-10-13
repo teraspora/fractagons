@@ -18,7 +18,7 @@
 (defn fix-maps
 "Read in all old maps in a directory, modify and resave"
    [dir]
-   (let [frm-list (drop 1 (file-seq fdir))]
+   (let [frm-list (drop 1 (file-seq fdir))]      ; first "file object" is the directory itself
       (map #(-> % slurp read-string fix-map (save-state-map (str "/home/john/--scratch/" (dock-string (.getName %) 4)))) frm-list)))
 
 (defn fix-map
