@@ -249,7 +249,7 @@ Distributed under the Eclipse Public License either version 1.0 or whatever.   B
   * g     Create a random state, clear the display and go with the new state.
   * G     Create a symmetrical random state, clear the display and go with the new state.
   * Alt+g and Alt+G do as above but preserve the previously selected variation.
-
+  * M     Trial feature:  start/stop recording a sequentially-named image sequence  
   DEVELOPER WALKTHROUGH:
 
   We start (following the code below linearly) by defining various constants some, e.g. HALF-PI, are not currently used,
