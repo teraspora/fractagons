@@ -181,7 +181,7 @@ Distributed under the Eclipse Public License either version 1.0 or whatever.   B
   upon each iteration, the previous point is first shifted by the pre-transform this creates all sorts 
   of interesting possibilities, where a plethora of polygonal structures can arise.
   Typically this fn is quite a simple trig fn, e.g. (x, y) -> (2 cos x, 2 sin y).  
-  Pre-transforms are numbered 0 to (dec PRE-TRANS-FUNC-COUNT).   Change the index with the m and M keys.
+  Pre-transforms are numbered 0 to (dec PRE-TRANS-FUNC-COUNT).   Change the index with the k and K keys.
 
   The (complex) output of the pre-transform may be further altered by squaring or square-rooting it.
   (use the / and . keys respectively for toggling these flags) and/or by squaring or squa.re-rooting
