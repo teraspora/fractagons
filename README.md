@@ -42,7 +42,7 @@ Distributed under the Eclipse Public License either version 1.0 or whatever.   B
 
   ### BACKGROUND ###
 
-  Fractagons is the lovechild of my romance with Clojure!   It was a difficult relationship at first: she appeared inscrutable, cryptic, arcane.   I wasn't convinced she needed to adorn herself with so many parentheses.   Having had a long affair with Java, I felt lost without solid classes, interfaces and types.   How on earth was I going to implement my 1000-lines-of-Java Complex number class (previously created to serve an escape-time fractal image generator I had been developing in Java) in Clojure?   
+  Fractagons is the lovechild of my romance with Clojure!   It was a difficult relationship at first: she appeared inscrutable, cryptic, arcane.   I wasn't convinced she needed to adorn herself with so many parentheses.   Having had a long affair with Java, I felt lost without solid classes, interfaces and types.   How on earth was I going to implement my 1000-lines-of-Java Complex number class (previously created to serve an escape-time fractal image generator I had been developing in Java<sup>[1](#fn1)</sup>) in Clojure?   
 
   But people said, "You just need to understand her way of thinking!"   I devoured "Clojure for the Brave and True", read and tried to understand Clojure code wherever I could find it, discovered Quil and played about in the Leiningen REPL.   And ultimately I stopped resisting and gave myself to Clojure!   At some point, the functional paradigm, immutable state, making "objects" out of simple maps and vectors, it just all started to make sense.   It felt like a breath of fresh air!   And from then on I have really been experiencing the joy of Clojure.   It really is a lovely way to code once you take on board its mindset.
 
@@ -228,8 +228,8 @@ Distributed under the Eclipse Public License either version 1.0 or whatever.   B
 
   TWEAKING: 
 
- |   Key |  Toggles
- |-------|----------
+ |  Key |  Toggles
+ |------|----------
  |    ? |    Swap real and imaginary parts after pre-transform:  x+iy -> y+ix.
  |    P |    "Polarise" z, i.e. treat [x y] as [r theta], meaning  x+iy -> x cos y + ix sin y.
  |    $ |    "Polarise" the value of the variation function each time it's applied.
@@ -243,7 +243,7 @@ Distributed under the Eclipse Public License either version 1.0 or whatever.   B
 
   MISCELLANEOUS COMMANDS:
 
-  |    Key |  Effect
+ |   Key  |  Effect
  ---------|---------------------------------
  |   Q    |  Quit the program
  |   s    |  Save image and state map in ./images, which will be created if it doesn't exist.
@@ -254,7 +254,7 @@ Distributed under the Eclipse Public License either version 1.0 or whatever.   B
  |   S    |  Reset the scale, x- and y- offsets, and cancel any mirroring.
  |   D    |  Reset the a, b, t, u, w params to default.
  |   j    |  Print the iteration count.
- |   \-   |   Decrement param-delta by dividing by (sqrt 2).
+ |   \-   |  Decrement param-delta by dividing by (sqrt 2).
  |   \+   |  Increment param-delta by multiplying by (sqrt 2).
  |   g    | Create a random state, clear the display and go with the new state.
  |   G    | Create a symmetrical random state, clear the display and go with the new state.
@@ -380,10 +380,15 @@ To get a random fractagon of whatever order you have set, hit “g”.   If you 
 
 If you hold down Alt while doing this you’ll preserve the variation function you have set.   This is good for exploring variants of a nice fractagon.
 
+You can of course make composite images, by changing parameters but not hitting "z" to clear the screen.
+
+Try this:
+ 
 This guide is far from complete so apologies in advance.   I hope it’s enough to get you going!
 
 Have fun.  
 
  John :)
 
-  -------------------------------------------------------------------------------------------------------------------
+  -----------------------------------------------------------------------------------------------------------------
+<a name="fn1">1</a>: Note:  I hope to be open-sourcing my Java escape-time fractal program on Github before the end of the year - but may re-implement it in Clojure first!
