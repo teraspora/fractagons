@@ -48,6 +48,33 @@ Distributed under the Eclipse Public License either version 1.0 or whatever.   B
 
   I would in fact go so far as to say that whereas writing nice, laconic, handsome, efficient Java code in order to solve some problem can give the same kind of satisfaction as solving the Guardian cryptic crosswword, doing the equivalent in Clojure feels more like having good sex!
 
+  ### ULTRA-QUICKSTART ###
+
+  Try this:
+
+  Fire up the program.   You will see a Sierpinski Triangle begin to appear.  Change the colouring algorithm by hitting "c".   Hit "z" to clear the screen.   Invert the colour by hitting "i".
+
+  Change from triangle to pentagon by hitting "N" twice.   Scale up and down with "E" and "e".   Reset the scale to default by typing Alt+S.
+
+  Keep hitting "z" to clear the display when you've tweaked parameter values - unless you want to create a composite image.
+
+  Go back to the Sierpinski Triangle by hitting "n" twice.   Press "=" to invoke a pre-transform.  Try changing the polygon order with "N" and "n" again.
+
+  Use "h" and "H" to play with the hue.
+
+  Hit "m" to mirror the image, "r" and "p" to reflect it, "o", "O" and "\*" to rotate it.
+
+  See the guide above for details and for other tweaks.
+
+  Save your image with "s".   Reload the last saved image with "R".
+
+  Recreate an image by reading in its corresponding "Fractagon Map" (.frm) file. Hit "\_" to do this.
+
+  Hit "G" to get a random symmetrical fractal.   If it's all black or you only see stuff developing around the edges, hit "e" a few times to reduce the scale.   If you don't like the colours then use "c", "i", "h" and "H" to play with them.   And "z" of course.
+
+  To make a composite image, change the pixel size to zero with "<" before tweaking parameters, then ">" to increase it to 1 again and recommence drawing.
+ 
+
   ### DEVELOPERS' & MATHEMATICIANS' GUIDE ###
 
   Fractagons has been made possible by the wonderful Quil graphics library, developed and maintained by
@@ -382,8 +409,6 @@ If you hold down Alt while doing this you’ll preserve the variation function y
 
 You can of course make composite images, by changing parameters but not hitting "z" to clear the screen.
 
-Try this:
- 
 This guide is far from complete so apologies in advance.   I hope it’s enough to get you going!
 
 Have fun.  
