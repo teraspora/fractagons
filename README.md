@@ -166,7 +166,7 @@ Distributed under the Eclipse Public License either version 1.0 or whatever.   B
       (a) When making a composite image, reduce to zero size by hitting < while changing parameters, so
   as not to pollute the image with noise.   Then use > to restart drawing.
       (b) Increase to 2 or 3 to see the general form and colouration of a new image quickly.   When 
-  these are satisfactory, just hit <z or <<z to restart with single-pixel dots.
+  these are satisfactory, just hit `>, then z or Z to restart with single-pixel dots.
 
   COLOURS:
 
