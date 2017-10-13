@@ -195,11 +195,11 @@ Distributed under the Eclipse Public License either version 1.0 or whatever.   B
 
  |   Key  | Effect
  |--------|--------------------------
- |   * r  |   Reflect image in y-axis.
- |   * p  |   Reflect image in x-axis.
- |   * O  |   Rotate image by PI/2.
- |   * o  |   Rotate image by PI/4.
- |   * \* |   Rotate image by half a sector, i.e. by PI/n, where n is the value of :polygon-order.
+ |    r  |   Reflect image in y-axis.
+ |    p  |   Reflect image in x-axis.
+ |    O  |   Rotate image by PI/2.
+ |    o  |   Rotate image by PI/4.
+ |    \* |   Rotate image by half a sector, i.e. by PI/n, where n is the value of :polygon-order.
 
   INTEGER PARAMETERS:
 
@@ -220,39 +220,40 @@ Distributed under the Eclipse Public License either version 1.0 or whatever.   B
 
   TWEAKING: 
 
-  Key   Toggles
-  ---   ------
-  * ?     Swap real and imaginary parts after pre-transform:  x+iy -> y+ix.
-  * P     "Polarise" z, i.e. treat [x y] as [r theta], meaning  x+iy -> x cos y + ix sin y.
-  * $     "Polarise" the value of the variation function each time it's applied.
-  * f     Apply the ballfold function.   Tweak it with a and b parameters.   [:deprecated]
-  * !     Reapply the variation fn after (polygon-j).   This will probably result in an asymmetrical image.
-  * .     Take the square root of the value of the pre-transform fn.
-  * /     Square the value of the pre-transform fn.
-  * \'     Take the square roots of real and imaginary components of the value of the pre-transform fn.
-  * \#     Square the real and imaginary components of the value of the pre-transform fn.
-  * =     Invoke pre-transform.
+ |   Key |  Toggles
+ |-------|----------
+ |    ? |    Swap real and imaginary parts after pre-transform:  x+iy -> y+ix.
+ |    P |    "Polarise" z, i.e. treat [x y] as [r theta], meaning  x+iy -> x cos y + ix sin y.
+ |    $ |    "Polarise" the value of the variation function each time it's applied.
+ |    f |    Apply the ballfold function.   Tweak it with a and b parameters.   [:deprecated]
+ |    ! |    Reapply the variation fn after (polygon-j).   This will probably result in an asymmetrical image.
+ |    . |    Take the square root of the value of the pre-transform fn.
+ |    / |    Square the value of the pre-transform fn.
+ |    \'|     Take the square roots of real and imaginary components of the value of the pre-transform fn.
+ |    \#|     Square the real and imaginary components of the value of the pre-transform fn.
+ |    = |    Invoke pre-transform.
 
   MISCELLANEOUS COMMANDS:
 
-  Key   Effect
-  ---   ------
-  * Q     Quit the program
-  * s     Save image and state map in ./images, which will be created if it doesn't exist.
-  * R     Revert to last saved image (but don't alter current state).
-  * _     Load a new state from a saved state map, usually in a .frm file.
-  * z     Clear the display, then carry on as normal.   Use often when changing parameters to craft a nice image.
-  * Z     Reset to initial state, except that the polygon-order, variation & pre-trans-index remain the same.
-  * S     Reset the scale, x- and y- offsets, and cancel any mirroring.
-  * D     Reset the a, b, t, u, w params to default.
-  * j     Print the iteration count.
-  * \-     Decrement param-delta by dividing by (sqrt 2).
-  * \+     Increment param-delta by multiplying by (sqrt 2).
-  * g     Create a random state, clear the display and go with the new state.
-  * G     Create a symmetrical random state, clear the display and go with the new state.
-  * Alt+g and Alt+G do as above but preserve the previously selected variation.
-  * M     Trial feature:  start/stop recording a sequentially-named image sequence  
-  DEVELOPER WALKTHROUGH:
+  |    Key |  Effect
+ ---------|---------------------------------
+ |   Q    |  Quit the program
+ |   s    |  Save image and state map in ./images, which will be created if it doesn't exist.
+ |   R    |  Revert to last saved image (but don't alter current state).
+ |   _    |  Load a new state from a saved state map, usually in a .frm file.
+ |   z    |  Clear the display, then carry on as normal.   Use often when changing parameters to craft a nice image.
+ |   Z    |  Reset to initial state, except that the polygon-order, variation & pre-trans-index remain the same.
+ |   S    |  Reset the scale, x- and y- offsets, and cancel any mirroring.
+ |   D    |  Reset the a, b, t, u, w params to default.
+ |   j    |  Print the iteration count.
+ |   \-   |   Decrement param-delta by dividing by (sqrt 2).
+ |   \+   |  Increment param-delta by multiplying by (sqrt 2).
+ |   g    | Create a random state, clear the display and go with the new state.
+ |   G    | Create a symmetrical random state, clear the display and go with the new state.
+ |   Alt+g and Alt+G | As above but preserve the previously selected variation.
+ |   M    | Trial feature:  start/stop recording a sequentially-named image sequence  
+
+  ### DEVELOPER WALKTHROUGH:
 
   We start (following the code below linearly) by defining various constants some, e.g. HALF-PI, are not currently used,
   but are retained for future convenience.
