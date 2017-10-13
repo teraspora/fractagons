@@ -193,13 +193,13 @@ Distributed under the Eclipse Public License either version 1.0 or whatever.   B
 
   REFLECTING AND ROTATING:
 
-  Key   Effect
-  ---  |  ------
-  * r  |   Reflect image in y-axis.
-  * p  |   Reflect image in x-axis.
-  * O  |   Rotate image by PI/2.
-  * o  |  Rotate image by PI/4.
-  * \* |    Rotate image by half a sector, i.e. by PI/n, where n is the value of :polygon-order.
+ |   Key  | Effect
+ |--------|--------------------------
+ |   * r  |   Reflect image in y-axis.
+ |   * p  |   Reflect image in x-axis.
+ |   * O  |   Rotate image by PI/2.
+ |   * o  |   Rotate image by PI/4.
+ |   * \* |   Rotate image by half a sector, i.e. by PI/n, where n is the value of :polygon-order.
 
   INTEGER PARAMETERS:
 
