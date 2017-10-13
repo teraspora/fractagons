@@ -119,7 +119,7 @@ Distributed under the Eclipse Public License either version 1.0 or whatever.   B
  __________________________________________________________________________________________________________
 
 
-  ### There follows a description of the most salient aspects of the program:
+  ### Main Functions
 
   POLYGON-J:
 
@@ -391,4 +391,6 @@ Have fun.
  John :)
 
   -----------------------------------------------------------------------------------------------------------------
-<a name="fn1">1</a>: Note:  I hope to be open-sourcing my Java escape-time fractal program on Github before the end of the year - but may re-implement it in Clojure first!
+Notes:  
+
+<a name="fn1">1</a>: I hope to be open-sourcing my Java escape-time fractal program on Github before the end of the year - but may re-implement it in Clojure first!
