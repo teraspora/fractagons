@@ -184,7 +184,7 @@ Distributed under the Eclipse Public License either version 1.0 or whatever.   B
   Pre-transforms are numbered 0 to (dec PRE-TRANS-FUNC-COUNT).   Change the index with the k and K keys.
 
   The (complex) output of the pre-transform may be further altered by squaring or square-rooting it.
-  (use the / and . keys respectively for toggling these flags) and/or by squaring or squa.re-rooting
+  (use the / and . keys respectively for toggling these flags) and/or by squaring or square-rooting
   the real and imaginary components separately (use the # and ' keys). Toggling one of either pair sets
   the other to false.
 
@@ -208,7 +208,7 @@ Distributed under the Eclipse Public License either version 1.0 or whatever.   B
   COLOURS:
 
   Colouration is either by speed or by curvature.   The c key toggles this state.   Control 
-  the hue offset with the h and H keys.   Toggle hue inversion with the i key.   That's all.
+  the hue offset with the h and H keys.   Toggle hue inversion with the i key.  I haven't devoted much energy to colouring and there's certainly scope for other, more sophisticated colouring algorithms.
 
   MIRRORING:
 
