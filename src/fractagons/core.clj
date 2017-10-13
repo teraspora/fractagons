@@ -1,3 +1,9 @@
+;;;; Program:  Fractagons, vsn 1.0
+;;;; Author:  John Lynch
+;;;; Date:  August 2017
+
+;;;; Use:  IFS fractal image generator.
+
 (ns fractagons.core
   (:require [quil.core :as q])
   (:require [fractagons.dynamic :as dyn])
