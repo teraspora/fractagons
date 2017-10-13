@@ -28,8 +28,8 @@ Distributed under the Eclipse Public License either version 1.0 or whatever.   B
 
   ### INTRODUCTION ###
 
-  Fractagons is an IFS (Iterated Function System) fractal generator which enables
-  you to make pretty colour pictures by composing and iterating
+  Fractagons is an IFS (Iterated Function System) fractal generator which enables 
+  you to make pretty colour pictures by composing and iterating 
   a bunch of functions over the xy-plane thousands of times and each time mapping
   the value obtained to the display window and colouring the resultant pixel according
   to criteria described (far) below.
