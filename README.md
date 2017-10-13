@@ -264,9 +264,10 @@ Distributed under the Eclipse Public License either version 1.0 or whatever.   B
  |    ! |    Reapply the variation fn after (polygon-j).   This will probably result in an asymmetrical image.
  |    . |    Take the square root of the value of the pre-transform fn.
  |    / |    Square the value of the pre-transform fn.
- |    \'|     Take the square roots of real and imaginary components of the value of the pre-transform fn.
- |    \#|     Square the real and imaginary components of the value of the pre-transform fn.
+ |    \'|    Take the square roots of real and imaginary components of the value of the pre-transform fn.
+ |    \#|    Square the real and imaginary components of the value of the pre-transform fn.
  |    = |    Invoke pre-transform.
+ |    % |    Whether the x, X, y, Y, e and E keys control scaling (default) or shifting (by 12 pixels).
 
   MISCELLANEOUS COMMANDS:
 
