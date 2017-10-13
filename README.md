@@ -197,7 +197,7 @@ Distributed under the Eclipse Public License either version 1.0 or whatever.   B
   * p     Reflect image in x-axis.
   * O     Rotate image by PI/2.
   * o     Rotate image by PI/4.
-  * *     Rotate image by half a sector, i.e. by PI/n, where n is the value of :polygon-order.
+  * \*     Rotate image by half a sector, i.e. by PI/n, where n is the value of :polygon-order.
 
   INTEGER PARAMETERS:
 
@@ -244,10 +244,11 @@ Distributed under the Eclipse Public License either version 1.0 or whatever.   B
   * S     Reset the scale, x- and y- offsets, and cancel any mirroring.
   * D     Reset the a, b, t, u, w params to default.
   * j     Print the iteration count.
-  * -     Decrement param-delta by dividing by (sqrt 2).
-  * +     Increment param-delta by multiplying by (sqrt 2).
+  * \-     Decrement param-delta by dividing by (sqrt 2).
+  * \+     Increment param-delta by multiplying by (sqrt 2).
   * g     Create a random state, clear the display and go with the new state.
-  * g     Create a symmetrical random state, clear the display and go with the new state.
+  * G     Create a symmetrical random state, clear the display and go with the new state.
+  * Alt+g and Alt+G do as above but preserve the previously selected variation.
 
   DEVELOPER WALKTHROUGH:
 
@@ -305,7 +306,7 @@ and therefore affect the image in some way (except a few like "j", which just pr
 
   GET STARTED:
 
-## Alpha ultra-minimalist Get-Started Guide ##
+### Alpha ultra-minimalist Get-Started Guide ##
 
 Run the program by firing up a Leiningen REPL in the root folder and evaluating 
 
@@ -348,11 +349,11 @@ Play about with the t, u, a and b parameters by hitting the corresponding keys. 
 Rotate the image by pi/2, pi/4 or half a sector (pi/n, where n is the order of the fractagon) using the keys “O”, “o”, and “*” respectively.
 
 Reflect L-R or Up-Down with “r” and “p”.
-Change various other parameters with “$”, “P”, “f”, “’”, “#”, “.”, “/”, “!”, … (see reference abave or look at the code in function (key-typed).
+Change various other parameters with “$”, “P”, “f”, “’”, “#”, “.”, “/”, “!”, … (see reference above or look at the code in function (key-typed).
 
 To save an image hit “s”.   It will be saved in a subdirectory of the directory from which the program has been run, called /images.   There will also be saved along with it a small text file containing the state map for that fractagon.   If you want to recreate an image, just load its state map file, which has the same name as the image file except with a .frm extension instead of .png.
 
-So how do you do that?   Just hit the underscore key (“_”) and you will be presented with a file chooser.
+So how do you do that?   Just hit the underscore key (“_”) and you will be presented with a file chooser. Select the file that is named as the image but with a .frm extension.
 
 To clear the screen and start again hit “z”.
 
@@ -372,9 +373,4 @@ This guide is far from complete so apologies in advance.   I hope it’s enough 
 
 Have fun.   John :)
 
-  *********************@@@@@@@@@@@@@@@@@@@@@@@@@@******************** #################
-
-  TO DO: logging option/ separate window/jframe
-         enter params on invocation?? (Override defaults?)  
-         package:  uberjar??  webapp?   android?
-         more colour control: try RGB??  [curvature speed sector -> [r g b]?? Colour maps?
+  -------------------------------------------------------------------------------------------------------------------
