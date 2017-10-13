@@ -38,7 +38,7 @@ Distributed under the Eclipse Public License either version 1.0 or whatever.   B
   monochrome photographic print gradually manifest in the developing tray under the darkroom's red light!
 
   If you want to skip all this information and just get started creating images, jump to the "Get started"
-  section at the end of this user guide.
+  section at the end of this user guide, or the ULTRA-QUICKSTART just below.
 
   ### EXAMPLE FRACTAGONS ###
 
