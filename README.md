@@ -24,8 +24,8 @@ Distributed under the Eclipse Public License either version 1.0 or whatever.   B
 *  Use:  IFS fractal image generator.
  ___________________________________________________________________________________________________________ 
 
- ## ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ USER AND DEVELOPER GUIDE ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
+ ## ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ USER AND DEVELOPER GUIDE ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+   
   ### INTRODUCTION ###
 
   Fractagons is an IFS (Iterated Function System) fractal generator which enables 
