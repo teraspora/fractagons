@@ -40,6 +40,21 @@ Distributed under the Eclipse Public License either version 1.0 or whatever.   B
   If you want to skip all this information and just get started creating images, jump to the "Get started"
   section at the end of this user guide.
 
+  ### EXAMPLE FRACTAGONS ###
+
+https://github.com/1-0-2-4/fractagons/blob/master/examples/fgon11V6-289269.png
+https://github.com/1-0-2-4/fractagons/blob/master/examples/fgon12V30-52815.png
+https://github.com/1-0-2-4/fractagons/blob/master/examples/fgon12V30-98467.png
+https://github.com/1-0-2-4/fractagons/blob/master/examples/fgon48V9-250660.png
+https://github.com/1-0-2-4/fractagons/blob/master/examples/fgon5V0-170226.png
+https://github.com/1-0-2-4/fractagons/blob/master/examples/fgon5V0-260562.png
+https://github.com/1-0-2-4/fractagons/blob/master/examples/fgon5V17-228338.png
+https://github.com/1-0-2-4/fractagons/blob/master/examples/fgon5V36-201795.png
+https://github.com/1-0-2-4/fractagons/blob/master/examples/fgon6V33-76924.png
+https://github.com/1-0-2-4/fractagons/blob/master/examples/fgon7V38-106486.png
+https://github.com/1-0-2-4/fractagons/blob/master/examples/fgon8V34-191056.png
+https://github.com/1-0-2-4/fractagons/blob/master/examples/fgon9V25-450783.png
+
   ### BACKGROUND ###
 
   Fractagons is the lovechild of my romance with Clojure!   It was a difficult relationship at first: she appeared inscrutable, cryptic, arcane.   I wasn't convinced she needed to adorn herself with so many parentheses.   Having had a long affair with Java, I felt lost without solid classes, interfaces and types.   How on earth was I going to implement my 1000-lines-of-Java Complex number class (previously created to serve an escape-time fractal image generator I had been developing in Java<sup>[1](#fn1)</sup>) in Clojure?   
