@@ -69,7 +69,7 @@ https://github.com/1-0-2-4/fractagons/blob/master/examples/fgon9V25-450783.png
 
   But people said, "You just need to understand her way of thinking!"   I devoured "Clojure for the Brave and True", read and tried to understand Clojure code wherever I could find it, discovered Quil and played about in the Leiningen REPL.   And ultimately I stopped resisting and gave myself to Clojure!   At some point, the functional paradigm, immutable state, making "objects" out of simple maps and vectors, it just all started to make sense.   It felt like a breath of fresh air!   And from then on I have really been experiencing the joy of Clojure.   It really is a lovely way to code once you take on board its mindset.
 
-  I would in fact go so far as to say that whereas writing nice, laconic, handsome, efficient Java code in order to solve some problem can give the same kind of satisfaction as solving the Guardian cryptic crosswword, doing the equivalent in Clojure feels more like having good sex!
+  I would in fact go so far as to say that whereas writing nice, laconic, handsome, efficient Java code in order to solve some problem can give the same kind of satisfaction as solving the Guardian cryptic crosswword, doing the equivalent in Clojure feels... well, much more sensual!
 
   ### ULTRA-QUICKSTART ###
 
