@@ -129,11 +129,6 @@
 (defn cube [x]
   (* x x x))
 
-(defn copy-sign
-  "Replacement for Math/copySign"
-  [a b]
-  (if (< b 0) (- a) a)) 
-
 (defn sin2 [x]
   (let [s (q/sin x)]
     (* s s)))
@@ -144,11 +139,11 @@
 
 (defn root-sin [x]
   (let [s (Math/sin x)]
-    (-> s Math/abs Math/sqrt double (copy-sign s))))
+    (-> s Math/abs Math/sqrt double (Math/copySign s))))
 
 (defn root-cos [x]
   (let [c (Math/cos x)]
-    (-> c Math/abs Math/sqrt double (copy-sign c))))
+    (-> c Math/abs Math/sqrt double (Math/copySign c))))
 
 ; Hmmm... there are many ways to write this; tail recursion prob. not the most efficient
 (defn space
@@ -261,17 +256,11 @@
 ;;; ##################################################################################################
 
 ;; Complex and vector fns
-
-(defn sq-copy-sign
-   "Square a real and stick on the sign of the original arg"
-  [x]
-  (copy-sign (double (* x x)) x))
-
 (defn sqrt-copy-sign
   "Take the square root of the absolute value of a real number and give it the 
      sign of the original number"
   [x]
-  (copy-sign (Math/sqrt (Math/abs x)) x))
+  (Math/copySign (Math/sqrt (Math/abs x)) x))
 
 (defn arg
   "Return the angle subtended by a vector with x=0, i.e. the argument of x+iy"
@@ -353,7 +342,7 @@
 (defn sq-components-signed-cx
   "Square the real and imaginary parts of a complex number, and adjust signs to preserve quadrant"
   [[x y]]
-    [(sq-copy-sign x) (sq-copy-sign y)])
+    [(Math/copySign (* x x) x) (Math/copySign (* y y) y)])
 
 (defn root-components-signed-cx
   "Apply (sqrt-copy-sign) to both real and imaginary parts of a complex number"
@@ -753,12 +742,8 @@
     17 [(-> x Math/exp q/cos (* PI)) (-> y Math/exp q/sin (* PI))]
     18 [(-> x Math/expm1 q/cos (* PI)) (-> y Math/expm1 q/sin (* PI))]
     19 [(-> x Math/abs Math/log q/cos (* PI)) (-> y Math/abs Math/log q/sin (* PI))]
-    20 [(-> x Math/abs Math/log1p q/cos (* PI)) (-> y Math/abs Math/log1p q/sin (* PI))])
-    21 [(-> z mod-cx q/cos twice) (-> z arg q/sin twice)]
-    22 [(-> x q/cos sq-copy-sign twice) (-> y q/sin sq-copy-sign twice)]
-    23 [(-> x sq-copy-sign q/cos twice) (-> y sq-copy-sign q/sin twice)]
-    24 [(-> (+ x y) q/cos twice) (-> (- x y) q/sin twice)]
-    25 [(+ x (q/cos y)) (- y (q/sin x))])
+    20 [(-> x Math/abs Math/log1p q/cos (* PI)) (-> y Math/abs Math/log1p q/sin (* PI))]))
+    
 ;;; ##########################################################################################
 
 (defn update-state [state]
