@@ -1,5 +1,7 @@
 # Fractagons
 
+![](examples/fgon11V6-289269.png)
+
 A [Quil](https://github.com/quil/quil) sketch implementing an IFS (Iterated Function System) fractal generator which enables you to create beautiful images by composing and iterating a bunch of functions over the xy-plane thousands of times and each time mapping the value obtained to the display window and colouring the resultant pixel.
 
 ## Usage
